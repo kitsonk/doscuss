@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+
+@import "../lib/dojo/resources/dojo.css";
+@import "../lib/dijit/themes/claro/document.css";
+@import "../lib/dijit/themes/claro/claro.css";
