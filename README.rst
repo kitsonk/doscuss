@@ -2,7 +2,8 @@
 doscuss - A Dojo/node.js Based Discussion Forum and Mailing List
 ================================================================
 
-:Authors: Kitson P. Kelly :Version: 0.1
+:Authors: Kitson P. Kelly
+:Version: 0.1
 
 This software is designed to fill the gap between a discussion forum and a mailing list.  While most forum software
 allows people to be updated via a mailing list it usually results in a mailing list that is less than optimal in it's

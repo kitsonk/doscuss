@@ -8,21 +8,93 @@
  */
 
 var util = require('util'),
+	fs = require('fs'),
 	colors = require('colors'),
 	express = require('express'),
-	sqlite3 = require('sqlite3'),
 	imap = require('imap'),
-	dUtil = require('doscussUtil');
+	dUtil = require('doscussUtil'),
+	forum = require('forum');
 	
 var app = express.createServer(),
 	appPort = 3001;
 
-app.use(app.router);
-app.use('/lib', express.static('./lib'));
-app.use('/client', express.static('./client'));
-app.use('/css', express.static('./css'));
-app.use('/images', express.static('./images'));
+forum.init('db/doscuss.sqlite');	
 
+/*
+ * Setting up app and linking in static content
+ */
+app.configure(function(){
+	app.set('view options', {layout: false});
+	app.use(express.cookieParser());
+	app.use(express.session({secret: 'yHCoyEPZ9WsNDORGb9SDDMNn0OOMcCgQiW5q8VFhDHJiztvvVVCPkZQWUAXl'}));
+	app.use(app.router);
+	app.use('/lib', express.static('./lib'));
+	app.use('/client', express.static('./client'));
+	app.use('/css', express.static('./css'));
+	app.use('/images', express.static('./images'));
+});
+
+/*
+ * User functions
+ */	
+	
+function loggedIn(request, response, next){
+	if (request.session.user){
+		next();
+	}else{
+		response.render('401.jade', {status: 401});
+	}
+};
+	 
+/*
+ * Generate RESTful services
+ */
+app.get('/posts/:id', function(request, response, next){
+	forum.getPost(request.params.id, function(post, err){
+		if (err) return next(err);
+		if (post.id){
+			response.json(post.data());
+		}else{
+			response.render('404.jade', {status: 404, res: request.url});
+		}
+	});
+});
+
+app.get('/posts/', function(request, response, next){
+	forum.getPosts(null, null, function(posts, err){
+		if (err) return next(err);
+		response.json(posts);
+	});
+});
+
+app.del('/posts/:id', function(request, response, next){
+	forum.deletePost(request.params.id, function(success, err){
+		if (err) return next(err);
+		if (success){
+			response.send();
+		}else{
+			response.render('404.jade', {status: 404, res: request.url});
+		}
+	});
+});
+
+/*
+ * Start listening
+ */
 app.listen(appPort);
 
-util.puts('docuss server '.blue + 'started '.green.bold + 'on port '.blue + appPort);
+util.puts('docuss HTTP server '.blue + 'started '.green.bold + 'on port '.blue + appPort.toString().yellow);
+
+/*
+ * HTTPS Server
+ */
+var appSsl = express.createServer({key: fs.readFileSync('config/doscuss.key.pem'), cert: fs.readFileSync('config/doscuss.crt.pem')}),
+	appSslPort = 3002;
+
+appSsl.configure(function(){
+	appSsl.use('/lib', express.static('./lib'));
+});
+
+appSsl.listen(appSslPort);
+
+util.puts('docuss HTTPS server'.blue + 'started '.green.bold + 'on port '.blue + appSslPort.toString().yellow);
