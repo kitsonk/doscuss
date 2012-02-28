@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forum Post Mockup</title>
+	<style type="text/css">
+		@import "../lib/dijit/themes/claro/document.css";
+		@import "../lib/dijit/themes/claro/claro.css";
+		
+		.doscussPost{
+			margin: 1.5em;
+			border: 2px solid #b5bcc7;
+		}
+		
+		.doscussPostBody{
+			margin: 1em;
+		}
+		
+		.doscussPostBody pre{
+			font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+			border-width: 1px;
+			padding: 1em;
+			margin: 0 1em 0;
+			overflow: auto;
+			width: auto;
+		}
+		
+		.doscussPostBody p{
+			line-height: 1em;
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+		
+		.doscussReplyBody {
+			margin: 1em;
+		}
+		
+		.doscussPostTopic{
+			padding: 9px;
+			font-size: 26px;
+			border-bottom: 1px solid #b5bcc7;
+		}
+		
+		.doscussPostSub{
+			width: 100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+			background-color: #e9f4fe;
+			border-bottom: 1px solid #b5bcc7;
+		}
+		
+		.doscussPostTags {
+			padding: 6px;
+			line-height: 2.5em;
+			vertical-align: top;
+		}
+		.doscussForumTag {
+			padding: 3px 4px;
+			margin: 1px;
+			border: 1px solid #b5bcc7;
+			background-color: #efefef;
+			background-image: url("../lib/dijit/themes/claro/images/standardGradient.png");
+			background-repeat: repeat-x;
+			background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			_background-image: none;
+			-webkit-transition-duration: 0.35s;
+			-webkit-transition-property: background-color;
+			-moz-transition-duration: 0.35s;
+			-moz-transition-property: background-color;
+			transition-duration: 0.35s;
+			transition-property: background-color;
+			cursor: pointer;
+		}
+		
+		.doscussForumTag:hover {
+			border: solid 1px #759dc0;
+			background-color: #abd6ff;
+			-webkit-transition-duration: 0.25s;
+			-moz-transition-duration: 0.25s;
+			transition-duration: 0.25s;
+		}
+		
+		.doscussPostInfo {
+			text-align: right;
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 6px 6px 6px auto;
+		}
+		
+		.doscussPostAvatar {
+			text-align: center;
+			padding: 6px;
+		}
+		
+		.doscussPostInfoDetails {
+			padding: 6px;
+		}
+		
+		.doscussReplyCollapsed, .doscussReply {
+			border: 2px solid #b5bcc7;
+		}
+		
+		.doscussReplyCollapsed {
+			margin: 3px 3px 3px 1em;
+		}
+		
+		.doscussReply {
+			margin: 3px 3px 1em 1em;
+		}
+		
+		.doscussReplySummary {
+			background-color: #efefef;
+			background-image: url("../lib/dijit/themes/claro/images/standardGradient.png");
+			background-repeat: repeat-x;
+			background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			_background-image: none;
+			-webkit-transition-duration: 0.35s;
+			-webkit-transition-property: background-color;
+			-moz-transition-duration: 0.35s;
+			-moz-transition-property: background-color;
+			transition-duration: 0.35s;
+			transition-property: background-color;
+			padding: 6px;
+			cursor: pointer;
+			border-collapse: collapse;
+			border-spacing: 0;
+			width: 100%;
+			border-bottom: 1px solid #b5bcc7;
+		}
+		
+		.doscussReplySummary:hover {
+			background-color: #abd6ff;
+			-webkit-transition-duration: 0.25s;
+			-moz-transition-duration: 0.25s;
+			transition-duration: 0.25s;
+			border-bottom: 1px solid #759dc0;
+		}
+		
+		.doscussReplySummary * {
+			vertical-align: top;
+		}
+		
+		.doscussReplySummary .doscussPostInfo {
+			
+		}
+		
+		.doscussReplySummary .doscussArrowNode {
+			background-image: url("../lib/dijit/themes/claro/images/spriteArrows.png");
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			height: 8px;
+			width: 7px;
+			float: left;
+			margin: 6px;
+		}
+		
+		.doscussReplayCollapsedItem {
+			background-color: #efefef;
+			background-image: url("../lib/dijit/themes/claro/images/standardGradient.png");
+			background-repeat: repeat-x;
+			background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			_background-image: none;
+			-webkit-transition-duration: 0.35s;
+			-webkit-transition-property: background-color;
+			-moz-transition-duration: 0.35s;
+			-moz-transition-property: background-color;
+			transition-duration: 0.35s;
+			transition-property: background-color;
+			padding: 6px;
+			cursor: pointer;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		
+		.doscussReplayCollapsedItem:hover {
+			background-color: #abd6ff;
+			-webkit-transition-duration: 0.25s;
+			-moz-transition-duration: 0.25s;
+			transition-duration: 0.25s;
+		}
+		
+		.doscussReplayCollapsedItem * {
+			vertical-align: middle;
+		}
+		
+		.doscussReplySummary .doscussPostInfo * {
+			vertical-align: middle;
+		}
+		
+		.doscussReplayCollapsedItem .doscussArrowNode {
+			background-image: url("../lib/dijit/themes/claro/images/spriteArrows.png");
+			background-repeat: no-repeat;
+			background-position: -14px 0;
+			height: 8px;
+			width: 7px;
+			margin-right: 3px;
+		}
+		
+		.doscussReplyAuthor {
+			font-weight: bold;
+		}
+		.doscussReplyTime {
+			font-style: italic;
+		}
+		.doscussReplyCollapsedSummary {
+			color: #575a5f;
+		}
+		
+	</style>
+</head>
+<body style="claro">
+	<h1>Forum Post Mockup</h1>
+	<div class="doscussPost">
+		<div class="doscussPostHeader">
+			<div class="doscussPostTopic">Having Problems with creating a dialog</div>
+			<table class="doscussPostSub">
+				<tbody>
+					<tr>
+						<td class="doscussPostTags">
+							<span class="doscussForumTag">dojo/core</span>
+							<span class="doscussForumTag">dijit/Dialog</span>
+							<span class="doscussForumTag">dojox/mobile/app</span>
+						</td>
+						<td>
+							<table class="doscussPostInfo">
+								<tbody>
+									<tr>
+										<td class="doscussPostInfoDetails">
+											<div>1 day ago</div>
+											<div><a href="#">kitsonk</a></div>
+											<div>411 posts</div>
+										</td>
+										<td class="doscussPostAvatar">
+											<img src="http://www.gravatar.com/avatar/6a584beee5cf0830b60311e6cbb3a9d0?s=32&amp;d=identicon&amp;r=PG" width="32" height="32" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="doscussPostBody">
+			<p>I can't seem to get the dijit.Dialog working correctly...</p>
+			<p>The following code seems not to be working right:</p>
+			<pre>
+require(["dijit/Dialog"], function(Dialog){
+	var myDialog = new Dialog({
+		id: "myDialog",
+		href: "something.html"
+	}, "myDialog");
+});</pre>
+			<p>Does anyone have any ideas of what I am doing wrong?</p>
+			<div class="doscussReply">
+				<table class="doscussReplySummary">
+					<tbody>
+						<tr>
+							<td>
+								<img class="doscussArrowNode" src="../lib/dojo/resources/blank.gif">
+							</td>
+							<td>
+								<table class="doscussPostInfo">
+									<tbody>
+										<tr>
+											<td class="doscussPostInfoDetails">
+												<div>about 8 hours ago</div>
+												<div><a href="#">bill</a></div>
+												<div>999 posts</div>
+											</td>
+											<td class="doscussPostAvatar">
+												<img src="http://www.gravatar.com/avatar/4145cb9cc056a332f9e8685ae57977e8?s=32&amp;d=identicon&amp;r=PG" width="32" height="32" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="doscussReplyBody">
+					<p>You should really try to read the documentation a little bit better.  Why don't you try reading <a href="http://dojotoolkit.org/reference-guide/dijit/Dialog">http://dojotoolkit.org/reference-guide/dijit/Dialog</a>?</p>
+				</div>
+			</div>
+			<div class="doscussReplyCollapsed">
+				<div class="doscussReplayCollapsedItem">
+					<img class="doscussArrowNode" src="../lib/dojo/resources/blank.gif">
+					<span class="doscussReplyAuthor">bill</span> &mdash; <span class="doscussReplyTime">about 3 hours ago</span> &mdash; <span class="doscussReplyCollapsedSummary">What you should consider doing is something something something other or else blah blah blah</span>
+				</div>
+				<div class="doscussReplyCollapsed">
+					<div class="doscussReplayCollapsedItem">
+						<img class="doscussArrowNode" src="../lib/dojo/resources/blank.gif">
+						<span class="doscussReplyAuthor">kitsonk</span> &mdash; <span class="doscussReplyTime">about 2 hours ago</span> &mdash; <span class="doscussReplyCollapsedSummary">Well, I tried that and then what I did was but that didn't really help and I was thinking...</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

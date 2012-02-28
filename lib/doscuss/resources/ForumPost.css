@@ -1,0 +1,61 @@
+@CHARSET "UTF-8";
+
+.claro .doscussPost {
+	border: 2px solid #b5bcc7;
+	background-color: #ffffff;
+}
+.claro .doscussPostHeader {
+	
+}
+.claro .doscussPostSummary {
+	padding: 9px;
+	font-size: 26px;
+	border-bottom: 1px solid #b5bcc7;
+}
+.claro .doscussPostSub {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background-color: #e9f4fe;
+	border-bottom: 1px solid #b5bcc7;
+}
+.claro .doscussPostTags {
+	padding: 6px;
+	line-height: 2.5em;
+	vertical-align: top;
+}
+.claro .doscussPostInfo {
+	text-align: right;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 6px 6px 6px auto;
+}
+.claro .doscussPostInfoDetails {
+	padding: 6px;
+}
+.claro .doscussPostAvatar {
+	text-align: center;
+	padding: 6px;
+}
+
+.claro .doscussPostBody {
+	margin: 1em;
+	font-size: 12px;
+}
+.claro .doscussPostBody p {
+	line-height: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.claro .doscussPostBody pre {
+	font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+	border-width: 1px;
+	padding: 1em;
+	margin: 0 1em 0;
+	overflow: auto;
+	width: auto;
+}
+
+.claro .doscussPostReplies {
+	
+}

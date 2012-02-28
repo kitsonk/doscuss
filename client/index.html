@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -7,7 +8,34 @@
 	<script type="text/javascript" src="../lib/dojo/dojo.js" data-dojo-config="async: true" charset="utf-8"></script>
 	<script type="text/javascript" src="app.js" charset="utf-8"></script>
 </head>
-<body style="claro">
+<body class="claro">
+	<div id="preloader">Loading doscuss...</div>
 	<h1>doscuss &mdash; A Dojo/Node.js Forum and Mailing List</h1>
+	<div data-dojo-type="dijit/Dialog" id="dialogAlert" data-dojo-props="title: 'Alert'">
+		<div id="dialogAlertMessage"></div>
+		<div class="dijitDialogPaneActionBar">
+			<button data-dojo-type="dijit/form/Button">
+				<span>Ok</span>
+				<script type="dojo/on" data-dojo-event="click">
+					doscuss.registry.byId("dialogAlert").hide();
+				</script>
+			</button>
+		</div>
+	</div>
+	<div data-dojo-type="dijit/form/DropDownButton" id="buttonLogin">
+		<span>Login...</span>
+		<div data-dojo-type="dijit/TooltipDialog" id="dialogLogin">
+			<form data-dojo-type="dijit/form/Form" id="formLogin" encType="multipart/form-data" data-dojo-props="onSubmit: doscuss.login">
+				<table>
+					<tr><td><label for="username">Username:</label></td><td><input type="text" data-dojo-type="dijit/form/TextBox" name="username" /></td></tr>
+					<tr><td><label for="password">Password:</label></td><td><input type="password" data-dojo-type="dijit/form/TextBox" name="password" /></td></tr>
+				</table>
+				<div class="dijitDialogPaneActionBar">
+					<button data-dojo-type="dijit/form/Button" type="reset">Reset</button>
+					<button data-dojo-type="dijit/form/Button" type="submit">Login</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,0 +1,141 @@
+@CHARSET "UTF-8";
+
+.doscussCenter {
+	text-align: center;
+}
+
+.doscussHighlight1 {
+	background-color: #ffffcc;
+	color: #765800;
+}
+.doscussHighlight2 {
+	background-color: #dbffdb;
+	color: #004200;
+}
+.doscussHighlight3 {
+	background-color: #ffe0ff;
+	color: #390039;
+}
+.doscussHighlight4 {
+	background-color: #ffebeb;
+	color: #480000;
+}
+
+.claro .doscussForum {
+	border-collapse: collapse;
+	border-margin: 0;
+}
+.claro .doscussForumHeader {
+	border: 1px solid #b5bcc7;
+	background-color: #efefef;
+	background-image: url("../../dijit/themes/claro/images/standardGradient.png");
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  	background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  	background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  	_background-image: none;
+	-webkit-transition-duration: 0.35s;
+	-moz-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+	-webkit-transition-property: background-color, border;
+	-moz-transition-property: background-color, border;
+	transition-property: background-color, border;
+}
+.claro .doscussForumHeaderHover {
+	background-color: #abd6ff;
+	border-color: #769dc0;
+	-webkit-transition-duration: 0.25s;
+	-moz-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+}
+.claro .doscussForumHeader th {
+	padding: 6px 7px 6px;
+	margin: 0;
+}
+.claro .doscussForumHeaderCount {
+	width: 75px;
+}
+.claro .doscussForumEmpty {
+	text-align: center;
+	padding: 2em;
+}
+
+.claro .doscussTopic {
+	background-color: #ffffff;
+	padding: 5px 5px 10px;
+	cursor: pointer;
+	border-bottom: 1px dotted #b5bcc7;
+	-webkit-transition-duration: 0.35s;
+	-moz-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+	-webkit-transition-property: background-color;
+	-moz-transition-property: background-color;
+	transition-property: background-color;
+}
+.claro .doscussTopicHover {
+	background-color: #e9f4fe;
+	-webkit-transition-duration: 0.25s;
+	-moz-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+}
+.claro .doscussTopicCount {
+	font-size: 24px;
+	vertical-align: middle;
+	text-align: center;
+	width: 75px;
+}
+.claro .doscussTopicSummary {
+	font-size: 16px;
+	padding: 3px;
+	margin: 6px 0 6px;
+}
+.claro .doscussTopicTags {
+	float: left;
+	line-height: 2.5em;
+}
+.claro .doscussTopicInfo {
+	float: right;
+	margin-top: 9px;
+	margin-bottom: 9px;
+}
+.claro .doscussTopicTime {
+	
+}
+.claro .doscussTopicUser {
+	
+}
+.claro .doscussTopicIcon {
+	font-size: 24px;
+	width: 20px;
+	text-align: right;
+	padding: 5px;
+}
+
+.claro .doscussTag {
+	cursor: pointer;
+	padding: 2px 4px;
+	margin: 0 3px 0;
+	border: 1px solid #b5bcc7;
+	background-color: #efefef;
+	background-image: url("../../dijit/themes/claro/images/standardGradient.png");
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	_background-image: none;
+	-webkit-transition-duration: 0.35s;
+	-webkit-transition-property: background-color;
+	-moz-transition-duration: 0.35s;
+	-moz-transition-property: background-color;
+	transition-duration: 0.35s;
+	transition-property: background-color;
+}
+.claro .doscussTagHover {
+	border: solid 1px #759dc0;
+	background-color: #abd6ff;
+	-webkit-transition-duration: 0.25s;
+	-moz-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+}

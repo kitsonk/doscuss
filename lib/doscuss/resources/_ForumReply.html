@@ -1,0 +1,28 @@
+<div class="${baseClass}">
+	<table class="${baseClass}Header">
+		<tbody>
+			<tr>
+				<td>
+					<img src="${_blankGif}" alt="" class="doscussArrowNode" role="presentation" />
+				</td>
+				<td>
+					<div class="${baseClass}InfoCollapsed">${!collapsedHtml}</div>
+					<table class="${baseClass}InfoExpanded">
+						<tbody>
+							<tr>
+								<td>
+									<div>${!timeHtml}</div>
+									<div>${!authorHtml}</div>
+									<div>${!countHtml}</div>
+								</td>
+								<td>${!avatarHtml}</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="${baseClass}Body" data-dojo-attach-point="bodyNode"></div>
+	<div class="${baseClass}Replies" data-dojo-attach-point="containerNode"></div>
+</div>

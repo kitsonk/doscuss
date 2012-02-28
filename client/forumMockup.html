@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forum Topic Mockup</title>
+	<style type="text/css">
+		@import "../lib/dojo/resources/dojo.css";
+		@import "../lib/dijit/themes/claro/document.css";
+		@import "../lib/dijit/themes/claro/claro.css";
+		
+		body{
+			margin: 2em;
+		}
+		.doscussForum {
+			margin: 1em;
+			border-collapse: collapse;
+		}
+		
+		.doscussForumHeader {
+			background-color: #EFEFEF;
+			background-image: url("../lib/dijit/themes/claro/images/standardGradient.png");
+			background-repeat: repeat-x;
+			background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+		  	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+		  	background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+		  	background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+		  	_background-image: none;
+			border: 1px solid #B5BCC7;
+			-webkit-transition-duration: 0.35s;
+			-webkit-transition-property: background-color, border;
+			-moz-transition-duration: 0.35s;
+			-moz-transition-property: background-color, border;
+			transition-duration: 0.35s;
+			transition-property: background-color, border;
+		}
+		
+		.doscussForumHeader:hover {
+			background-color: #ABD6FF;
+			border-color: #769DC0;
+			-webkit-transition-duration: 0.25s;
+			-moz-transition-duration: 0.25s;
+			transition-duration: 0.25s;
+		}
+		
+		.doscussForumHeader th {
+			padding: 6px 7px 6px;
+			margin: 0;
+		}
+		
+		.doscussForumHeaderCenter {
+			text-align: center;
+		}
+		
+		.doscussForumItem {
+			padding: 5px 5px 10px;
+			cursor: pointer;
+			border-bottom: 1px dotted #b5bcc7;
+			-webkit-transition-duration: 0.35s;
+			-webkit-transition-property: background-color;
+			-moz-transition-duration: 0.35s;
+			-moz-transition-property: background-color;
+			transition-duration: 0.35s;
+			transition-property: background-color;
+		}
+		
+		.doscussForumItem:hover {
+			background-color: #e9f4fe;
+			-webkit-transition-duration: 0.25s;
+			-moz-transition-duration: 0.25s;
+			transition-duration: 0.25s;
+		}
+		
+		.doscussForumItemViews, .doscussForumItemReplies {
+			font-size: 24px;
+			vertical-align: middle;
+			text-align: center;
+			width: 75px;
+		}
+		
+		.doscussForumSummaryText {
+			font-size: 16px;
+			padding: 3px;
+			margin: 6px 0 6px;
+		}
+		
+		.doscussForumTags {
+			float: left;
+			margin-bottom: 3px;
+			line-height: 2.5em;
+		}
+		
+		.doscussForumTag {
+			padding: 3px 4px;
+			margin: 1px;
+			border: 1px solid #b5bcc7;
+			background-color: #efefef;
+			background-image: url("../lib/dijit/themes/claro/images/standardGradient.png");
+			background-repeat: repeat-x;
+			background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			_background-image: none;
+			-webkit-transition-duration: 0.35s;
+			-webkit-transition-property: background-color;
+			-moz-transition-duration: 0.35s;
+			-moz-transition-property: background-color;
+			transition-duration: 0.35s;
+			transition-property: background-color;
+			cursor: pointer;
+		}
+		
+		.doscussForumTag:hover {
+			border: solid 1px #759dc0;
+			background-color: #abd6ff;
+			-webkit-transition-duration: 0.25s;
+			-moz-transition-duration: 0.25s;
+			transition-duration: 0.25s;
+		}
+		
+		.doscussForumInfo {
+			float: right;
+			margin-top: 9px;
+			margin-bottom: 9px;
+		}
+		
+		.doscussForumItemIcons {
+			font-size: 24px;
+			width: 20px;
+			text-align: right;
+			padding: 5px;
+		}
+		
+		.doscussHighlight1 {
+			background-color: #ffffcc;
+			color: #765800;
+		}
+		
+		.doscussHighlight2 {
+			background-color: #dbffdb;
+			color: #004200;
+		}
+		
+		.doscussHighlight3 {
+			background-color: #ffe0ff;
+			color: #390039;
+		}
+		
+		.doscussHighlight4 {
+			background-color: #ffebeb;
+			color: #480000;
+		}
+	</style>
+</head>
+<body class="claro">
+	<h1>Forum Topic Mockup</h1>
+	<table class="doscussForum" style="width: 800px;">
+		<thead>
+			<tr class="doscussForumHeader">
+				<th class="doscussForumHeaderCenter">Views</th>
+				<th class="doscussForumHeaderCenter">Replies</th>
+				<th>Topic</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody class="doscussForumBody">
+			<tr class="doscussForumItem">
+				<td class="doscussForumItemViews"><div>0</div></td>
+				<td class="doscussForumItemReplies"><div>0</div></td>
+				<td class="doscussForumItemSummary">
+					<div class="doscussForumSummaryText">Question about how to use Dojo</div>
+					<div class="doscussForumTags">
+						<span class="doscussForumTag">dojo</span>
+						<span class="doscussForumTag">dijit</span>
+						<span class="doscussForumTag">dojox</span>
+					</div>
+					<div class="doscussForumInfo"><span class="doscussForumTime">4 mins ago</span> by <a class="doscussForumUserLink" href="#">kitsonk</a></div>
+				</td>
+				<td class="doscussForumItemIcons">&gt;</td>
+			</tr>
+			<tr class="doscussForumItem">
+				<td class="doscussForumItemViews"><div>999</div></td>
+				<td class="doscussForumItemReplies"><div>542</div></td>
+				<td class="doscussForumItemSummary">
+					<div class="doscussForumSummaryText">Having Problems with creating a dialog</div>
+					<div class="doscussForumTags">
+						<span class="doscussForumTag">dojo/core</span>
+						<span class="doscussForumTag">dijit/Dialog</span>
+						<span class="doscussForumTag">dojox/mobile/app</span>
+					</div>
+					<div class="doscussForumInfo"><span class="doscussForumTime">1 hour ago</span> by <a class="doscussForumUserLink" href="#">kitsonk</a></div>
+				</td>
+				<td class="doscussForumItemIcons">&gt;</td>
+			</tr>
+			<tr class="doscussForumItem">
+				<td class="doscussForumItemViews"><div>9.9k</div></td>
+				<td class="doscussForumItemReplies"><div>4.2k</div></td>
+				<td class="doscussForumItemSummary">
+					<div class="doscussForumSummaryText">Here is even a really <span class="doscussHighlight1">longer</span> more extensive <span class="doscussHighlight4">summary</span> of a <span class="doscussHighlight2">topic</span> which is <span class="doscussHighlight3">actually way</span> too long</div>
+					<div class="doscussForumTags">
+						<span class="doscussForumTag">dojo/core</span>
+						<span class="doscussForumTag">dijit/dialog</span>
+						<span class="doscussForumTag">dojox/mobile/app</span>
+						<span class="doscussForumTag">dojox/mobile/app</span>
+						<span class="doscussForumTag">dojox/mobile/app</span>
+						<span class="doscussForumTag">dojox/mobile/app</span>
+						<span class="doscussForumTag">dojox/mobile/app</span>
+						<span class="doscussForumTag">dojox/mobile/app</span>
+					</div>
+					<div class="doscussForumInfo"><span class="doscussForumTime">53 days ago</span> by <a class="doscussForumUserLink" href="#">kitsonk</a></div>
+				</td>
+				<td class="doscussForumItemIcons">&gt;</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<div class="${baseClass}" data-dojo-attach-point="focusNode">
+	<div class="${baseClass}Header">
+		<div class="${baseClass}Summary">${!summary}</div>
+		<table class="${baseClass}Sub">
+			<tbody>
+				<tr>
+					<td class="${baseClass}Tags" data-dojo-attach-point="tagsNode"></td>
+					<td>
+						<table class="${baseClass}Info">
+							<tbody>
+								<tr>
+									<td class="${baseClass}InfoDetails">
+										<div>${!timeHtml}</div>
+										<div>${!authorHtml}</div>
+										<div>${!countHtml}</div>
+									</td>
+									<td class="${baseClass}Avatar">${!avatarHtml}</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="${baseClass}Body" data-dojo-attach-point="bodyNode"></div>
+	<div class="${baseClass}Replies" data-dojo-attach-point="containerNode"></div>
+<div>

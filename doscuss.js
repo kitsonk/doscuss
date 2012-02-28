@@ -28,6 +28,9 @@ app.configure(function(){
 	app.use(express.cookieParser());
 	app.use(express.session({secret: 'yHCoyEPZ9WsNDORGb9SDDMNn0OOMcCgQiW5q8VFhDHJiztvvVVCPkZQWUAXl'}));
 	app.use(app.router);
+	app.use('/lib/dojo', express.static('../dojo'));
+	app.use('/lib/dijit', express.static('../dijit'));
+	app.use('/lib/dojox', express.static('../dojox'));
 	app.use('/lib', express.static('./lib'));
 	app.use('/client', express.static('./client'));
 	app.use('/css', express.static('./css'));
@@ -60,7 +63,7 @@ app.get('/posts/:id', function(request, response, next){
 	});
 });
 
-app.get('/posts/', function(request, response, next){
+app.get('/posts', function(request, response, next){
 	forum.getPosts(null, null, function(posts, err){
 		if (err) return next(err);
 		response.json(posts);
@@ -78,23 +81,13 @@ app.del('/posts/:id', function(request, response, next){
 	});
 });
 
+app.post('/users/:id/login', function(request, response, next){
+	response.json({login: "success"});
+});
+
 /*
  * Start listening
  */
 app.listen(appPort);
 
 util.puts('docuss HTTP server '.blue + 'started '.green.bold + 'on port '.blue + appPort.toString().yellow);
-
-/*
- * HTTPS Server
- */
-var appSsl = express.createServer({key: fs.readFileSync('config/doscuss.key.pem'), cert: fs.readFileSync('config/doscuss.crt.pem')}),
-	appSslPort = 3002;
-
-appSsl.configure(function(){
-	appSsl.use('/lib', express.static('./lib'));
-});
-
-appSsl.listen(appSslPort);
-
-util.puts('docuss HTTPS server'.blue + 'started '.green.bold + 'on port '.blue + appSslPort.toString().yellow);
