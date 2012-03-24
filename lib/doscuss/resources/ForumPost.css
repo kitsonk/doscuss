@@ -1,11 +1,20 @@
 @CHARSET "UTF-8";
 
+.doscussReset {
+    border: 0 none;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.doscussReply .doscussArrowNodeInner {
+	display: none;
+}
+
 .claro .doscussPost {
 	border: 2px solid #b5bcc7;
 	background-color: #ffffff;
-}
-.claro .doscussPostHeader {
-	
 }
 .claro .doscussPostSummary {
 	padding: 9px;
@@ -24,30 +33,44 @@
 	line-height: 2.5em;
 	vertical-align: top;
 }
-.claro .doscussPostInfo {
+.claro .doscussPostInfo,
+.claro .doscussReplyInfoOpen {
 	text-align: right;
 	border-collapse: collapse;
 	border-spacing: 0;
 	margin: 6px 6px 6px auto;
 }
-.claro .doscussPostInfoDetails {
+.claro .doscussPostInfoDetails,
+.claro .doscussReplyInfoDetails, {
 	padding: 6px;
 }
-.claro .doscussPostAvatar {
+.claro .doscussPostAvatar,
+.claro .doscussReplyAvatar {
 	text-align: center;
+	vertical-align: middle;
 	padding: 6px;
+}
+.claro .doscussPostControl {
+	text-align: right;
+	vertical-align: top;
+	margin-right: auto;
+	padding: 6px;
+	width: 72px;
 }
 
-.claro .doscussPostBody {
+.claro .doscussPostBody,
+.claro .doscussReplyBodyInner {
 	margin: 1em;
 	font-size: 12px;
 }
-.claro .doscussPostBody p {
+.claro .doscussPostBody p,
+.claro .doscussReplyBodyInner p {
 	line-height: 1em;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
-.claro .doscussPostBody pre {
+.claro .doscussPostBody pre,
+.claro .doscussReplyBodyInner pre {
 	font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
 	border-width: 1px;
 	padding: 1em;
@@ -55,7 +78,89 @@
 	overflow: auto;
 	width: auto;
 }
+.claro .doscussPostEditor {
+	margin: 0 1em;
+}
 
 .claro .doscussPostReplies {
-	
+	margin: 0 1em 1em 1em;
+}
+.claro .doscussReply {
+	border: 2px solid #b5bcc7;
+	margin: 3px 3px 3px 1em;
+}
+.claro .doscussReplyHeader, 
+.claro .doscussReplyHeaderOpen, 
+.claro .doscussReplyHeaderClosed {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background-color: #efefef;
+	background-image: url("../../dijit/themes/claro/images/standardGradient.png");
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+	_background-image: none;
+	-webkit-transition-duration: 0.35s;
+	-webkit-transition-property: background-color;
+	-moz-transition-duration: 0.35s;
+	-moz-transition-property: background-color;
+	transition-duration: 0.35s;
+	transition-property: background-color;
+	cursor: pointer;
+}
+.claro .doscussReplyHeaderOpen {
+	border-bottom: 1px solid #b5bcc7;
+}
+.claro .doscussReplyHeaderHover {
+	background-color: #abd6ff;
+	-webkit-transition-duration: 0.25s;
+	-moz-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+}
+.claro .doscussReplyHeader td, 
+.claro .doscussReplyHeaderOpen td, 
+.claro .doscussReplyHeaderClosed td {
+	vertical-align: top;
+}
+.claro .doscussReplyArrow {
+	width: 23px;
+}
+.claro .doscussArrowNode {
+	background-image: url("../../dijit/themes/claro/images/spriteArrows.png");
+	background-repeat: no-repeat;
+	height: 8px;
+	width: 7px;
+	margin: 9px 0 6px 6px;
+}
+.claro .doscussReplyHeaderClosed .doscussArrowNode {
+	background-position: -14px 0;
+}
+.claro .doscussReplyHeaderOpen .doscussArrowNode {
+	background-position: 0 0;
+}
+.claro .doscussReplyHeaderClosed .doscussReplyInfoWrapClosed {
+	position: relative;
+}
+.claro .doscussReplyHeaderClosed .doscussReplyInfoClosed {
+	overflow: hidden;
+	white-space: nowrap;
+	position: absolute;
+	width: 100%;
+	padding: 5px 0 5px;
+}
+.claro .doscussReplyHeaderClosed .doscussReplyInfoOpen,
+.claro .doscussReplyHeaderOpen .doscussReplyInfoClosed {
+	display: none;
+}
+.claro .doscussReplyAuthor {
+	font-weight: bold;
+}
+.claro .doscussReplyTime {
+	font-style: italic;
+}
+.claro .doscussReplyCollapsedSummary {
+	color: #575a5f;
 }

@@ -28,17 +28,34 @@
 			var forumPost1 = new ForumPost({
 				id: "forumPost1",
 				summary: "Having Problems with creating a dialog",
-				author: "kitsonk",
+				author: {
+					username: "kitsonk",
+					postCount: "102",
+					avatar: "<img src=\"http://www.gravatar.com/avatar/6a584beee5cf0830b60311e6cbb3a9d0?s=32&amp;d=identicon&amp;r=PG\" width=\"32\" height=\"32\" />"
+				},
 				created: "2011-07-16T19:20:00+00:00",
 				tags: ["dojo", "dijit", "dojox"]
 			}, "forumPost1");
 			
 			var reply1 = forumPost1.addReply({
-				summary: "Read the documentation better...",
-				author: "kitsonk",
+				body: "What you should consider doing is something something something other or else blah blah blah",
+				author: {
+					username: "bill",
+					postCount: "939",
+					avatar: "<img src=\"http://www.gravatar.com/avatar/4145cb9cc056a332f9e8685ae57977e8?s=32&amp;d=identicon&amp;r=PG\" width=\"32\" height=\"32\" />"
+				},
 				created: "2011-07-16T21:05:33+00:00"
 			});
-			console.log(reply1);
+			
+			var reply2 = reply1.addReply({
+				body: "<p>Read the documentation better...</p>\n<p>Or something else, blah blah blah...</p>",
+				author: {
+					username: "neonstalwart",
+					postCount: "404",
+					avatar: "<img src=\"http://www.gravatar.com/avatar/4625cc3a305e2a7c2ccb902b5da5de04?s=32&amp;d=identicon&amp;r=PG\" width=\"32\" height=\"32\" />"
+				},
+				created: "2011-07-16T21:06:54+00:00"
+			});
 		});
 	</script>
 </head>

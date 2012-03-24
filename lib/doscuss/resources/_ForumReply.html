@@ -1,21 +1,30 @@
 <div class="${baseClass}">
-	<table class="${baseClass}Header">
+	<table class="${baseClass}HeaderClosed" data-dojo-attach-point="headerNode" data-dojo-attach-event="onclick:_onHeaderClick">
 		<tbody>
 			<tr>
-				<td>
-					<img src="${_blankGif}" alt="" class="doscussArrowNode" role="presentation" />
+				<td class="${baseClass}Arrow">
+					<img src="${_blankGif}" alt="" class="doscussArrowNode" role="presentation" /><span data-dojo-attach-point="arrowNodeInner" class="doscussArrowNodeInner"></span>
 				</td>
-				<td>
-					<div class="${baseClass}InfoCollapsed">${!collapsedHtml}</div>
-					<table class="${baseClass}InfoExpanded">
+				<td class="${baseClass}Info">
+					<div class="${baseClass}InfoWrapClosed">
+						<div class="${baseClass}InfoClosed">
+							<span class="${baseClass}Author">${!author.username}</span
+							> &mdash; <span class="${baseClass}Time">${!timeHtml}</span
+							> &mdash; <span class="${baseClass}CollapsedSummary">${!summary}</span
+						></div>
+					</div>
+					<table class="${baseClass}InfoOpen">
 						<tbody>
 							<tr>
-								<td>
+								<td class="${baseClass}InfoDetails">
 									<div>${!timeHtml}</div>
 									<div>${!authorHtml}</div>
 									<div>${!countHtml}</div>
 								</td>
-								<td>${!avatarHtml}</td>
+								<td class="${baseClass}Avatar">${!avatarHtml}</td>
+								<td class="${baseClass}Control">
+									<div data-dojo-attach-point="controlNode"></div>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -23,6 +32,11 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="${baseClass}Body" data-dojo-attach-point="bodyNode"></div>
+	<div class="${baseClass}BodyInner" data-dojo-attach-point="hideNode" role="presentation">
+		<div class="doscussReset" data-dojo-attach-point="wipeNode" role="presentation">
+			<div class="${baseClass}BodyInner" data-dojo-attach-point="bodyNode"></div>
+		</div>
+	</div>
+	<div class="${baseClass}Editor" data-dojo-attach-point="editorNode"></div>
 	<div class="${baseClass}Replies" data-dojo-attach-point="containerNode"></div>
 </div>
