@@ -70,16 +70,19 @@
 	margin-bottom: 1em;
 }
 .claro .doscussPostBody pre,
-.claro .doscussReplyBodyInner pre {
+.claro .doscussReplyBodyInner pre{
 	font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
-	border-width: 1px;
+	border: 1px dotted #d3d3d3;
 	padding: 1em;
 	margin: 0 1em 0;
 	overflow: auto;
 	width: auto;
 }
-.claro .doscussPostEditor {
-	margin: 0 1em;
+.claro .doscussPostEditor, .claro .doscussReplyEditor {
+	margin: 0 1em 1em;
+}
+.claro .doscussPostEditorButtons, .claro .doscussReplyEditorButtons {
+	padding: 6px 0;
 }
 
 .claro .doscussPostReplies {
@@ -163,4 +166,52 @@
 }
 .claro .doscussReplyCollapsedSummary {
 	color: #575a5f;
+}
+
+#dijitEditorBody blockquote.doscussQ1,
+#dijitEditorBody blockquote.doscussQ2,
+#dijitEditorBody blockquote.doscussQ3,
+#dijitEditorBody blockquote.doscussQ4,
+.claro blockquote.doscussQ1,
+.claro blockquote.doscussQ2,
+.claro blockquote.doscussQ3,
+.claro blockquote.doscussQ4 {
+	margin: 6px 0 0 6px;
+	padding: 6px;
+	border-top: none;
+	border-bottom: none;
+	font-size: 100%;
+	line-height: 1.5em;
+}
+
+#dijitEditorBody blockquote.doscussQ1,
+.claro blockquote.doscussQ1 {
+	border-left: 2px solid #759dc0;
+}
+
+#dijitEditorBody blockquote.doscussQ2,
+.claro blockquote.doscussQ2 {
+	border-left: 2px solid #c0a475;
+}
+
+#dijitEditorBody blockquote.doscussQ3,
+.claro blockquote.doscussQ3 {
+	border-left: 2px solid #75c091;
+}
+
+#dijitEditorBody blockquote.doscussQ4,
+.claro blockquote.doscussQ4 {
+	border-left: 2px solid #c075bA;
+}
+
+#dijitEditorBody pre,
+#dijitEditorBody code {
+	background-color: #efefef;
+	font-size: 115%;
+	font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+	border: 1px dotted #d3d3d3;
+	padding: 1em;
+	margin: 0 1em 0;
+	overflow: auto;
+	width: auto;
 }

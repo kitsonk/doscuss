@@ -35,8 +35,11 @@
 	<div class="${baseClass}BodyInner" data-dojo-attach-point="hideNode" role="presentation">
 		<div class="doscussReset" data-dojo-attach-point="wipeNode" role="presentation">
 			<div class="${baseClass}BodyInner" data-dojo-attach-point="bodyNode"></div>
+			<div class="${baseClass}Editor" data-dojo-attach-point="editorWrapNode">
+		    <div data-dojo-attach-point="editorNode"></div>
+		    <div class="${baseClass}EditorButtons" data-dojo-attach-point="editorButtonNode"></div>
+			</div>
 		</div>
 	</div>
-	<div class="${baseClass}Editor" data-dojo-attach-point="editorNode"></div>
 	<div class="${baseClass}Replies" data-dojo-attach-point="containerNode"></div>
 </div>

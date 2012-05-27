@@ -27,7 +27,11 @@
 		</table>
 	</div>
 	<div class="${baseClass}Body" data-dojo-attach-point="bodyNode"></div>
-	<div class="${baseClass}Editor" data-dojo-attach-point="editorNode"></div>
-	<div class="${baseClass}Reply" data-dojo-attach-point="replyNode"></div>
 	<div class="${baseClass}Replies" data-dojo-attach-point="containerNode"></div>
+	<div class="${baseClass}Editor" data-dojo-attach-point="editorWrapNode">
+    <div data-dojo-attach-point="editorNode"></div>
+    <textarea id="dijit._editor.RichText.value" 
+        style="display:none;position:absolute;top:-100px;left:-100px;height:3px;width:3px;overflow:hidden;"></textarea>
+    <div class="${baseClass}EditorButtons" data-dojo-attach-point="editorButtonNode"></div>
+	</div>
 <div>

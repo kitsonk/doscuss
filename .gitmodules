@@ -10,6 +10,6 @@
 [submodule "lib/util"]
 	path = lib/util
 	url = git@github.com:dojo/util
-[submodule "lib/dojo-controller"]
-	path = lib/dojo-controller
-	url = git@github.com:kitsonk/dojo-controller
+[submodule "lib/controller"]
+	path = lib/controller
+	url = git@github.com:kitsonk/controller
