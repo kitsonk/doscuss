@@ -1,0 +1,24 @@
+doctype 5
+html
+  head
+    block head
+
+    block css
+      style(type='text/css', media="all")
+        @import '/lib/dijit/themes/claro/claro.css';
+        @import '/css/app.css';
+    block scripts
+      script(type="text/javascript")
+        dojoConfig = {
+          async: true
+        };
+      script(type="text/javascript", src="/lib/dojo/dojo.js")
+
+  body.claro
+    #preloader Loading doscuss...
+
+    block header
+
+    block content
+
+    block footer

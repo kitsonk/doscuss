@@ -1,0 +1,34 @@
+extends layout
+
+append scripts
+  script(type="text/javascript", src='/client/app.js')
+
+block content
+  h1 doscuss &mdash; A Dojo/Node.js Forum and Mailing List
+  #dialogAlert(data-dojo-type="dijit/Dialog", data-dojo-props="title: 'Alert'")
+    #dialogAlertMessage
+    .dijitDialogPaneActionBar
+      button(type="button", data-dojo-type="dijit/form/Button")
+        span Ok
+        script(type="dojo/on", data-dojo-event="click")
+          | doscuss.registry.byId("dialogAlert").hide();
+
+  #buttonLogin(data-dojo-type="dijit/form/DropDownButton")
+    span Login...
+    #dialogLogin(data-dojo-type="dijit/TooltipDialog")
+      form#formLogin(data-dojo-type="dijit/form/Form", encType="multipart/form-data", data-dojo-props="onSubmit: doscuss.login")
+        table
+          tbody
+            tr
+              td
+                label(for="username") Username:
+              td
+                input(type="text", data-dojo-type="dijit/form/TextBox", name="username")
+            tr
+              td
+                label(for="password") Password:
+              td
+                input(type="password", data-dojo-type="dijit/form/TextBox", name="password")
+        .dijitDialogPaneActionBar
+          button(type="reset", data-dojo-type="dijit/form/Button") Reset
+          button(type="submit", data-dojo-type="dijit/form/Button") Login

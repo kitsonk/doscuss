@@ -8,13 +8,14 @@
  */
 
 require([
-		"dojo/_base/Deferred",
-        "dojo/_base/fx",
-		"dojo/_base/lang",
-		"dojo/_base/xhr",
-		"dojo/dom",
-		"dojo/dom-style",
-		"dojo/parser",
+		"dojo/_base/event", // event.stop
+        "dojo/_base/fx", // baseFx.fadeOut
+		"dojo/dom", // dom.byId
+		"dojo/dom-style", // style.set
+		"dojo/parser", // parser.parse
+		"dojo/ready", // ready
+		"dojo/request", // request.get, request.post
+		"dojo/when", // when
 		"dijit/form/Button",
         "dijit/form/DropDownButton",
 		"dijit/form/Form",
@@ -25,7 +26,7 @@ require([
 		"dojox/encoding/crypto/RSAKey",
 		"doscuss/utils",
         "dojo/domReady!"],
-function(Deferred, baseFx, dlang, xhr, dom, domStyle, parser, Button, DropDownButton, Form, TextBox, 
+function(event, baseFx, dom, style, parser, ready, request, when, Button, DropDownButton, Form, TextBox, 
 		registry, Dialog, TooltipDialog, RSAKey, utils){
 	doscuss = {};
 	doscuss.registry = registry;
@@ -40,21 +41,19 @@ function(Deferred, baseFx, dlang, xhr, dom, domStyle, parser, Button, DropDownBu
 	};
 	
 	doscuss.login = function(e){
-		dojo.stopEvent(e);  // Keeps form from normal submit
-		dojo.xhrGet({
-			url: "./login.json",
+		event.stop(e);  // Keeps form from normal submit
+		request.get("/client/login.json", {
 			handleAs: "json"
 		}).then(function(loginKey){
-			var rsakey = new dojox.encoding.crypto.RSAKey(),
+			var rsakey = new RSAKey(),
 				loginInfo = registry.byId("formLogin").get("value");
 			rsakey.setPublic(loginKey.n, loginKey.e);
 			var credentials = {
 				username: loginInfo.username,
 				password: utils.hex2b64(rsakey.encrypt(loginInfo.password))
 			}
-			dojo.xhrPost({
-				content: credentials,
-				url: "/users/" + escape(loginInfo.username) + "/login/",
+			request.post("/users/" + escape(loginInfo.username) + "/login/", {
+				data: credentials,
 				handleAs: "json"
 			}).then(function(results){
 				if (results && results.login === "success"){
@@ -70,12 +69,14 @@ function(Deferred, baseFx, dlang, xhr, dom, domStyle, parser, Button, DropDownBu
 		});
 	};
 	
-	Deferred.when(parser.parse(), function(){
-		baseFx.fadeOut({  //Get rid of the loader once parsing is done
-			node: "preloader",
-			onEnd: function() {
-				domStyle.set("preloader","display","none");
-			}
-		}).play();
+	ready(function(){
+		when(parser.parse(), function(){
+			baseFx.fadeOut({  //Get rid of the loader once parsing is done
+				node: "preloader",
+				onEnd: function() {
+					style.set("preloader","display","none");
+				}
+			}).play();
+		});
 	});
 });
