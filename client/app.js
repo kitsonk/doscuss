@@ -10,11 +10,15 @@
 require([
 		"dojo/_base/event", // event.stop
         "dojo/_base/fx", // baseFx.fadeOut
+		"dojo/_base/xhr", // xhr.post, xhr.get
 		"dojo/dom", // dom.byId
 		"dojo/dom-style", // style.set
 		"dojo/parser", // parser.parse
 		"dojo/ready", // ready
-		"dojo/request", // request.get, request.post
+		"dojo/store/JsonRest",
+		"dojo/store/Memory",
+		"dojo/store/Observable",
+		"dojo/store/Cache",
 		"dojo/when", // when
 		"dijit/form/Button",
         "dijit/form/DropDownButton",
@@ -24,10 +28,11 @@ require([
 		"dijit/Dialog",
 		"dijit/TooltipDialog",
 		"dojox/encoding/crypto/RSAKey",
+		"doscuss/Forum",
 		"doscuss/utils",
         "dojo/domReady!"],
-function(event, baseFx, dom, style, parser, ready, request, when, Button, DropDownButton, Form, TextBox, 
-		registry, Dialog, TooltipDialog, RSAKey, utils){
+function(event, baseFx, xhr, dom, style, parser, ready, JsonRest, Memory, Observable, Cache, when, Button, DropDownButton, 
+		Form, TextBox, registry, Dialog, TooltipDialog, RSAKey, Forum, utils){
 	doscuss = {};
 	doscuss.registry = registry;
 	
@@ -42,7 +47,8 @@ function(event, baseFx, dom, style, parser, ready, request, when, Button, DropDo
 	
 	doscuss.login = function(e){
 		event.stop(e);  // Keeps form from normal submit
-		request.get("/client/login.json", {
+		xhr.get({
+			url: "/client/login.json",
 			handleAs: "json"
 		}).then(function(loginKey){
 			var rsakey = new RSAKey(),
@@ -52,8 +58,9 @@ function(event, baseFx, dom, style, parser, ready, request, when, Button, DropDo
 				username: loginInfo.username,
 				password: utils.hex2b64(rsakey.encrypt(loginInfo.password))
 			}
-			request.post("/users/" + escape(loginInfo.username) + "/login/", {
-				data: credentials,
+			xhr.post({
+				url: "/users/" + escape(loginInfo.username) + "/login/",
+				content: credentials,
 				handleAs: "json"
 			}).then(function(results){
 				if (results && results.login === "success"){
@@ -69,8 +76,23 @@ function(event, baseFx, dom, style, parser, ready, request, when, Button, DropDo
 		});
 	};
 	
+	doscuss.initForum = function(node){
+		if(!doscuss.forum){
+			var jsonrest = new JsonRest({
+				target: "/posts/"
+			});
+			var memory = new Memory();
+			doscuss.posts = Observable(Cache(jsonrest, memory));
+			doscuss.forum = new Forum({
+				store: doscuss.posts
+			}, node);
+			doscuss.forum.startup();
+		}
+	};
+	
 	ready(function(){
 		when(parser.parse(), function(){
+			doscuss.initForum("forum");
 			baseFx.fadeOut({  //Get rid of the loader once parsing is done
 				node: "preloader",
 				onEnd: function() {

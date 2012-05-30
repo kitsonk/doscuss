@@ -7,6 +7,9 @@
  * 
  */
 
+/* Bootstrap an AMD-esque define to be able to load AMD modules */
+require('doscussUtil/define-node');
+
 var util = require('util'),
 	fs = require('fs'),
 	colors = require('colors'),

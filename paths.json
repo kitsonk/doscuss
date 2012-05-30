@@ -1,0 +1,5 @@
+{
+  "dojo": "lib/dojo",
+  "dijit": "lib/dijit",
+  "dojox": "lib/dojox"
+}

@@ -3,6 +3,7 @@
 @import "../lib/dojo/resources/dojo.css";
 @import "../lib/dijit/themes/claro/document.css";
 @import "../lib/dijit/themes/claro/claro.css";
+@import "../lib/doscuss/resources/main.css";
 
 html, body{
 	height: 100%;
@@ -20,6 +21,11 @@ html, body{
 	z-index: 999;
 	font-size: 24px;
 	font-weight: bold;
+}
+
+#forum {
+	width: 80%;
+	margin: 0 auto 0;
 }
 
 #dialogAlert{
