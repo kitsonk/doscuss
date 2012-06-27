@@ -7,7 +7,7 @@
     "url": "git://github.com/kitsonk/doscuss.git"
   },
   "engines": {
-    "node": "~0.6.10"
+    "node": "~0.6.18"
   },
   "dependencies": {
     "colors": ">= 0.6.0",
